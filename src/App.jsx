@@ -21,13 +21,21 @@ function App() {
     e.preventDefault()
 
     let currentResponse = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${process.env.API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${
+        coordinates.latitude
+      }&lon=${coordinates.longitude}&units=imperial&appid=${
+        import.meta.env.VITE_API_KEY
+      }`
     )
 
     setCurrentData(currentResponse.data)
 
     let hourlyResponse = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${process.env.API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${
+        coordinates.latitude
+      }&lon=${coordinates.longitude}&units=imperial&appid=${
+        import.meta.env.VITE_API_KEY
+      }`
     )
 
     setHourlyData(hourlyResponse.data.list)
